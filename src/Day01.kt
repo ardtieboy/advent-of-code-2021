@@ -1,17 +1,15 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
-    }
-
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    val originalValues = readInput("Day01").map { it.toInt() }
+    val nextValues = originalValues.subList(1, originalValues.size) + 0
 
-    val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    println(
+        originalValues
+            .zip(nextValues)
+            .map { (original, next) -> next - original }
+            .filter { it > 0 }
+            .count()
+    )
+
 }
